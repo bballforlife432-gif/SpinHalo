@@ -10,8 +10,8 @@
       --bg: #0b1016;
       --bg-alt: #121721;
       --card: #181e2b;
-      --accent: #ff6b3d;   /* main accent (fire/orange) */
-      --accent-soft: #ffb28b;
+      --accent: #00ff6a;      /* main accent green */
+      --accent-soft: #6bffb0; /* softer green for subtle text */
       --text: #f5f7ff;
       --muted: #a5acbf;
       --border-soft: #262c3a;
@@ -109,20 +109,20 @@
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, var(--accent), #ff844e);
-      color: #1b0f09;
+      background: linear-gradient(135deg, var(--accent), #6bffb0);
+      color: #02140a;
       font-weight: 600;
-      box-shadow: 0 12px 30px rgba(255, 107, 61, 0.5);
+      box-shadow: 0 12px 30px rgba(0, 255, 106, 0.35);
     }
 
     .btn-primary:hover {
       transform: translateY(-1px);
-      box-shadow: 0 18px 40px rgba(255, 107, 61, 0.6);
+      box-shadow: 0 18px 40px rgba(0, 255, 106, 0.5);
     }
 
     .btn-ghost {
       background: transparent;
-      border-color: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.16);
       color: var(--muted);
     }
 
@@ -191,7 +191,7 @@
       height: 8px;
       border-radius: 50%;
       background: var(--accent);
-      box-shadow: 0 0 10px rgba(255, 107, 61, 0.8);
+      box-shadow: 0 0 10px rgba(0, 255, 106, 0.9);
     }
 
     .mini-grid {
@@ -282,7 +282,7 @@
       <!-- LEFT COLUMN: COPY -->
       <div class="main-copy">
         <div class="eyebrow">Beta Drop • Limited Spots</div>
-        <h1><span class="highlight">Tire Halo</span> turns your tires into rolling art.</h1>
+        <h1><span class="highlight">SpinHalo</span> turns your tires into rolling art.</h1>
 
         <p class="subtitle">
           Custom sidewall design kits for all kinds of cars – sedans, trucks, EVs and more – with many designs to come. Engineered to look good in motion and parked, day or night.
@@ -297,7 +297,7 @@
         </div>
 
         <div class="pill-row">
-          <div class="pill">For daily drives, car meets & road trips</div>
+          <div class="pill">For daily drives, car meets &amp; road trips</div>
           <div class="pill">Sidewall only – never on tread</div>
         </div>
 
@@ -310,8 +310,8 @@
       <div class="visual-column">
         <!-- Main hero image: American flag truck -->
         <div class="hero-image">
-          <!-- main hero image -->
-          <img src="flag-truck.jpg" alt="Truck with Tire Halo American flag sidewall design" />
+          <!-- make sure this file exists in your repo -->
+          <img src="flag-truck.jpg" alt="Truck with SpinHalo American flag sidewall design" />
           <div class="tag-chip">
             <span class="tag-dot"></span>
             <span>Stars &amp; Stripes • Flag Sidewall</span>
@@ -322,7 +322,7 @@
         <div class="mini-grid" id="designs">
           <div class="mini-card">
             <!-- Galaxy wheels example -->
-            <img src="galaxy-sedan.jpg" alt="Galaxy tire halo design" />
+            <img src="galaxy-sedan.jpg" alt="Galaxy SpinHalo tire design" />
             <div class="mini-title">Nebula Spin</div>
             <div class="mini-desc">
               Galaxy-inspired ring that glows in purples and blues as the wheels turn.
@@ -331,7 +331,7 @@
 
           <div class="mini-card">
             <!-- Fire wheels example -->
-            <img src="fire-tesla.jpg" alt="Fire halo tire design" />
+            <img src="fire-tesla.jpg" alt="Fire SpinHalo tire design" />
             <div class="mini-title">Firestorm Halo</div>
             <div class="mini-desc">
               Hyper-real flames wrapping the outer sidewall. Clean edge, no cartoon vibes.
@@ -345,7 +345,7 @@
   <!-- WAITLIST SECTION -->
   <div id="waitlist" style="padding: 32px 16px 64px; display:flex; justify-content:center;">
     <div style="max-width:640px; width:100%; text-align:center; color:#d1d5e5; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif;">
-      <h2 style="font-size:26px; margin-bottom:10px;">Get early access to Tire Halo.</h2>
+      <h2 style="font-size:26px; margin-bottom:10px;">Get early access to SpinHalo.</h2>
       <p style="font-size:15px; line-height:1.6; margin-bottom:18px; color:#9da3ba;">
         Drop your email and we’ll reach out when the first limited kits are ready.
         No spam – just launch details and updates.
@@ -355,7 +355,7 @@
           style="padding:10px 14px; border-radius:999px; border:1px solid #303649; background:#050712; color:#f5f7ff; width:70%; max-width:320px; margin-bottom:10px;" />
         <br />
         <button type="submit"
-          style="padding:10px 22px; border-radius:999px; border:none; background:linear-gradient(135deg,#ff6b3d,#ff844e); color:#1b0f09; font-weight:600; cursor:pointer;">
+          style="padding:10px 22px; border-radius:999px; border:none; background:linear-gradient(135deg,#00ff6a,#6bffb0); color:#02140a; font-weight:600; cursor:pointer;">
           Join the waitlist
         </button>
       </form>
