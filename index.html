@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tire Halo – Turn Your Tires Into Art</title>
+
+  <style>
+    :root {
+      --bg: #0b1016;
+      --bg-alt: #121721;
+      --card: #181e2b;
+      --accent: #ff6b3d;   /* main accent (fire/orange) */
+      --accent-soft: #ffb28b;
+      --text: #f5f7ff;
+      --muted: #a5acbf;
+      --border-soft: #262c3a;
+      --radius-lg: 24px;
+      --radius-md: 16px;
+      --shadow-soft: 0 22px 45px rgba(0, 0, 0, 0.55);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #1b2333 0, #05070b 50%, #000 100%);
+      color: var(--text);
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 48px 16px;
+    }
+
+    .shell {
+      max-width: 1120px;
+      width: 100%;
+      background: linear-gradient(145deg, #151a24, #0b0f18);
+      border-radius: 32px;
+      box-shadow: var(--shadow-soft);
+      padding: 32px 32px 40px;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+      gap: 32px;
+    }
+
+    /* Left: text + CTA */
+    .main-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .eyebrow {
+      font-size: 13px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent-soft);
+    }
+
+    h1 {
+      font-size: clamp(32px, 3.1vw, 40px);
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+    }
+
+    .highlight {
+      color: var(--accent);
+    }
+
+    .subtitle {
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--muted);
+      max-width: 32rem;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .btn-primary,
+    .btn-ghost {
+      border-radius: 999px;
+      padding: 11px 22px;
+      font-size: 15px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.15s ease, box-shadow 0.15s ease,
+        background 0.15s ease, border-color 0.15s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), #ff844e);
+      color: #1b0f09;
+      font-weight: 600;
+      box-shadow: 0 12px 30px rgba(255, 107, 61, 0.5);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 40px rgba(255, 107, 61, 0.6);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      border-color: rgba(255, 255, 255, 0.12);
+      color: var(--muted);
+    }
+
+    .btn-ghost:hover {
+      border-color: rgba(255, 255, 255, 0.3);
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .pill {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      border-radius: 999px;
+      padding: 5px 10px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: var(--muted);
+    }
+
+    /* Right side: hero images + mini cards */
+    .visual-column {
+      display: grid;
+      grid-template-rows: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 18px;
+    }
+
+    .hero-image {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: #000;
+      border: 1px solid var(--border-soft);
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transform: scale(1.02);
+    }
+
+    .tag-chip {
+      position: absolute;
+      left: 18px;
+      bottom: 18px;
+      background: rgba(4, 5, 10, 0.8);
+      border-radius: 999px;
+      padding: 6px 11px;
+      font-size: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      backdrop-filter: blur(12px);
+    }
+
+    .tag-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 10px rgba(255, 107, 61, 0.8);
+    }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .mini-card {
+      border-radius: var(--radius-md);
+      background: radial-gradient(circle at top, #202635 0, #101521 55%, #070a0f 100%);
+      border: 1px solid var(--border-soft);
+      padding: 10px 10px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .mini-card img {
+      width: 100%;
+      border-radius: 12px;
+      height: 110px;
+      object-fit: cover;
+    }
+
+    .mini-title {
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .mini-desc {
+      font-size: 11px;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    /* Bottom stripe / trust line */
+    .bottom-strip {
+      margin-top: 26px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding-top: 16px;
+      font-size: 11px;
+      color: var(--muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .dot-sep {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.24);
+    }
+
+    /* Responsive */
+    @media (max-width: 840px) {
+      .shell {
+        grid-template-columns: minmax(0, 1fr);
+        padding: 24px 18px 30px;
+      }
+      .visual-column {
+        grid-template-rows: minmax(0, 1.3fr) minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 540px) {
+      .page {
+        padding: 16px;
+      }
+      .shell {
+        border-radius: 22px;
+      }
+      h1 {
+        font-size: 28px;
+      }
+      .mini-card img {
+        height: 96px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <div class="shell">
+      <!-- LEFT COLUMN: COPY -->
+      <div class="main-copy">
+        <div class="eyebrow">Beta Drop • Limited Spots</div>
+        <h1><span class="highlight">Tire Halo</span> turns your tires into rolling art.</h1>
+
+        <p class="subtitle">
+          Custom sidewall design kits for Teslas, trucks and show builds. Galaxy rings,
+          fire halos, flags, dragon scales and more – engineered to pop in motion and at night.
+        </p>
+
+        <div class="cta-row">
+          <a href="#waitlist" class="btn-primary">
+            Join the waitlist
+            <span>→</span>
+          </a>
+          <a href="#designs" class="btn-ghost">View designs</a>
+        </div>
+
+        <div class="pill-row">
+          <div class="pill">Galaxy • Fire • Flag • Scales</div>
+          <div class="pill">Sidewall only – never on tread</div>
+        </div>
+
+        <div class="bottom-strip">
+          <span>Built for car meets, rollers & content.</span>
+          <span class="dot-sep"></span>
+          <span>Early users help shape the final material (vinyl → rubber/TPU).</span>
+        </div>
+      </div>
+
+      <!-- RIGHT COLUMN: VISUALS -->
+      <div class="visual-column">
+        <!-- Main hero image -->
+        <div class="hero-image">
+          <!-- TODO: replace IMAGE_URL_1 with your Tesla / galaxy wheel image URL -->
+          <img src="IMAGE_URL_1" alt="Car with Tire Halo galaxy sidewall design" />
+          <div class="tag-chip">
+            <span class="tag-dot"></span>
+            <span>Nebula Spin • Galaxy Sidewall</span>
+          </div>
+        </div>
+
+        <!-- Mini cards for alt designs -->
+        <div class="mini-grid" id="designs">
+          <div class="mini-card">
+            <!-- Replace IMAGE_URL_2 with fire wheel image -->
+            <img src="IMAGE_URL_2" alt="Fire halo tire design" />
+            <div class="mini-title">Firestorm Halo</div>
+            <div class="mini-desc">
+              Hyper-real flames wrapping the outer sidewall. Clean edge, no cartoon vibes.
+            </div>
+          </div>
+
+          <div class="mini-card">
+            <!-- Replace IMAGE_URL_3 with American flag wheel image -->
+            <img src="IMAGE_URL_3" alt="American flag tire design" />
+            <div class="mini-title">Stars & Stripes Band</div>
+            <div class="mini-desc">
+              Minimal, bold American flag ring. Perfect for F-150s, trucks and muscle.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WAITLIST SECTION (outside the main shell so Carrd can anchor-scroll here) -->
+  <div id="waitlist" style="padding: 32px 16px 64px; display:flex; justify-content:center;">
+    <div style="max-width:640px; width:100%; text-align:center; color:#d1d5e5; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif;">
+      <h2 style="font-size:26px; margin-bottom:10px;">Get early access to Tire Halo.</h2>
+      <p style="font-size:15px; line-height:1.6; margin-bottom:18px; color:#9da3ba;">
+        Drop your email and we’ll reach out when the first limited kits are ready.
+        No spam – just launch details and beta invites.
+      </p>
+      <!-- Replace this simple form with Carrd's own form element if you like -->
+      <form>
+        <input type="email" required placeholder="Your email"
+          style="padding:10px 14px; border-radius:999px; border:1px solid #303649; background:#050712; color:#f5f7ff; width:70%; max-width:320px; margin-bottom:10px;" />
+        <br />
+        <button type="submit"
+          style="padding:10px 22px; border-radius:999px; border:none; background:linear-gradient(135deg,#ff6b3d,#ff844e); color:#1b0f09; font-weight:600; cursor:pointer;">
+          Join the waitlist
+        </button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
